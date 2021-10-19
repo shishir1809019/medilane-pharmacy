@@ -12,7 +12,9 @@ const Service = (props) => {
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description.slice(0, 100)}</Card.Text>
           <Link to={`/service/${id}`}>
-            <Button variant="warning">Show Details</Button>
+            <Button variant="warning">
+              Show Details <i className="fas fa-info-circle"></i>
+            </Button>
           </Link>
         </Card.Body>
       </Card>

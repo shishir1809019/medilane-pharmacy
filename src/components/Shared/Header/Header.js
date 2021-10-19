@@ -8,13 +8,24 @@ const Header = () => {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" sticky="top">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+        sticky="top"
+      >
         <Container>
           <Navbar.Brand as={Link} to="/home">
             Medilane Pharmacy
           </Navbar.Brand>
-          <Nav className="ms-auto">
-            <Navbar.Collapse className="justify-content-end">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+          <Navbar.Collapse
+            id="responsive-navbar-nav"
+            className="justify-content-end"
+          >
+            <Nav>
               <Nav.Link as={Link} to="/home#home">
                 Home
               </Nav.Link>
@@ -40,8 +51,8 @@ const Header = () => {
               <Navbar.Text className="ms-5">
                 Signed in as: <a href="#login"> {user?.displayName}</a>
               </Navbar.Text>
-            </Navbar.Collapse>
-          </Nav>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>

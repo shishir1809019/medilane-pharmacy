@@ -33,7 +33,7 @@ const ContactForm = () => {
           className="d-block mx-auto mb-5"
           type="submit"
         >
-          Send Message
+          <i class="far fa-paper-plane"></i> Send Message
         </Button>
       </Form>
     </div>

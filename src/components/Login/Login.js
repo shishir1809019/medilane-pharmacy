@@ -14,8 +14,9 @@ const Login = () => {
     email,
     password,
     handleError,
-    user,
     setIsLoading,
+    setUser,
+    setError,
   } = useAuth();
   let history = useHistory();
   let location = useLocation();
@@ -33,12 +34,21 @@ const Login = () => {
 
   const handleEmailPassLogin = (e) => {
     e.preventDefault();
-    console.log(user);
     handleError();
-    processLogin(email, password);
-    if (user?.email) {
-      history.push(redirect_uri);
-    }
+    processLogin(email, password)
+      .then((result) => {
+        const { email, displayName } = result.user;
+        const userInfo = {
+          displayName: displayName,
+          email: email,
+        };
+        setUser(userInfo);
+        setError("");
+        history.push(redirect_uri);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
   return (
     <div>

@@ -1,6 +1,6 @@
 ## Medilane Pharmacy
 
-live website:
+live website: https://medilane-pharmacy.web.app/
 
 - In this website I have used - **React || React router || React Bootstrap || Firebase || ContextApi || HashLInk || CSS & HTML**
 - This website is manly used for online delivery of medicine.

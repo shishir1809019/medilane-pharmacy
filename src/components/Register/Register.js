@@ -16,7 +16,9 @@ const Register = () => {
     registerNewUser,
     email,
     password,
-    user,
+    setUser,
+    setUserName,
+    setError,
   } = useAuth();
 
   let history = useHistory();
@@ -35,12 +37,27 @@ const Register = () => {
 
   const handleEmailPassRegistration = (e) => {
     e.preventDefault();
-
     handleError();
-    registerNewUser(email, password);
-    if (user?.email) {
-      history.push(redirect_uri);
-    }
+
+    registerNewUser(email, password)
+      .then((result) => {
+        setUserName();
+        console.log(result.user);
+        const { email, displayName } = result.user;
+        console.log(displayName);
+
+        const userInfo = {
+          displayName: displayName,
+          email: email,
+        };
+
+        setUser(userInfo);
+        setError("");
+        history.push(redirect_uri);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   return (
