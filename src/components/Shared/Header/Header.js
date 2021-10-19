@@ -51,8 +51,9 @@ const Header = () => {
               <Navbar.Text className="ms-5">
                 Signed in as:{" "}
                 <a href="#login">
-                  {/* {user?.displayName} */}
-                  {user?.email?.substring(0, user?.email.lastIndexOf("@"))}
+                  {user.displayName
+                    ? user?.displayName
+                    : user?.email?.substring(0, user?.email.lastIndexOf("@"))}
                 </a>
               </Navbar.Text>
             </Nav>
