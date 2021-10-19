@@ -14,7 +14,6 @@ const Login = () => {
     setError,
     setIsLoading,
 
-    handleError,
     handleEmailChange,
     handlePasswordChange,
     signInUsingGoogle,
@@ -36,7 +35,16 @@ const Login = () => {
 
   const handleEmailPassLogin = (e) => {
     e.preventDefault();
-    handleError();
+    // handle error
+    if (password.length < 6) {
+      setError("Password must be at least 6 character");
+      return;
+    }
+    if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+      setError("Password must contain 2 uppercase");
+      return;
+    }
+
     processLogin(email, password)
       .then((result) => {
         const { email, displayName } = result.user;

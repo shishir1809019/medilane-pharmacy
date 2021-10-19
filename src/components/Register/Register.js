@@ -15,7 +15,6 @@ const Register = () => {
     setIsLoading,
     setUserName,
 
-    handleError,
     handleNameChange,
     handleEmailChange,
     handlePasswordChange,
@@ -27,6 +26,7 @@ const Register = () => {
   let history = useHistory();
   let location = useLocation();
   let redirect_uri = location.state?.from || "/home";
+
   const handleGoogleSignIn = () => {
     signInUsingGoogle()
       .then((result) => {
@@ -40,7 +40,15 @@ const Register = () => {
 
   const handleEmailPassRegistration = (e) => {
     e.preventDefault();
-    handleError();
+    // handle error
+    if (password.length < 6) {
+      setError("Password must be at least 6 character");
+      return;
+    }
+    if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+      setError("Password must contain 2 uppercase");
+      return;
+    }
 
     registerNewUser(email, password)
       .then((result) => {

@@ -52,36 +52,9 @@ const useFirebase = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  const handleError = (e) => {
-    if (password.length < 6) {
-      setError("Password must be at least 6 character");
-      return;
-    }
-    if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
-      setError("Password must contain 2 uppercase");
-      return;
-    }
-  };
 
   const registerNewUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
-    // .then((result) => {
-    //   setUserName();
-    //   const { email, displayName } = result.user;
-    //   console.log(displayName);
-    //   const userInfo = {
-    //     displayName: displayName,
-    //     email: email,
-    //   };
-    //   setUser(userInfo);
-    //   console.log(result.user);
-    //   console.log(userInfo);
-
-    //   setError("");
-    // })
-    // .catch((error) => {
-    //   setError(error.message);
-    // });
   };
 
   const processLogin = () => {
@@ -126,7 +99,7 @@ const useFirebase = () => {
     handleNameChange,
     handleEmailChange,
     handlePasswordChange,
-    handleError,
+
     registerNewUser,
     processLogin,
   };
