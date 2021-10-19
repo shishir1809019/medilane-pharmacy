@@ -1,12 +1,13 @@
 import React from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./Service.css";
 
 const Service = (props) => {
   const { id, url, name, price, description } = props.medicine;
   return (
     <Col>
-      <Card>
+      <Card className="service-card">
         <Card.Img variant="top" height="300px" src={url} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>

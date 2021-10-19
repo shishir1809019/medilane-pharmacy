@@ -6,19 +6,22 @@ import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
   const {
-    signInUsingGoogle,
-    setIsLoading,
-    handleError,
     error,
+    email,
+    password,
+
+    setUser,
+    setError,
+    setIsLoading,
+    setUserName,
+
+    handleError,
     handleNameChange,
     handleEmailChange,
     handlePasswordChange,
+
+    signInUsingGoogle,
     registerNewUser,
-    email,
-    password,
-    setUser,
-    setUserName,
-    setError,
   } = useAuth();
 
   let history = useHistory();
@@ -77,6 +80,7 @@ const Register = () => {
             className="form-control"
             id="name"
             placeholder="Your Name"
+            required
           />
         </div>
 
@@ -105,7 +109,7 @@ const Register = () => {
             autoComplete="on"
           />
         </div>
-        <div>{error}</div>
+        <div className="text-danger">{error}</div>
         <div className="col-12">
           <button type="submit" className="btn btn-primary">
             Register

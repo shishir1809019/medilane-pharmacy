@@ -6,17 +6,19 @@ import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const {
-    signInUsingGoogle,
-    handleEmailChange,
-    handlePasswordChange,
     error,
-    processLogin,
     email,
     password,
-    handleError,
-    setIsLoading,
+
     setUser,
     setError,
+    setIsLoading,
+
+    handleError,
+    handleEmailChange,
+    handlePasswordChange,
+    signInUsingGoogle,
+    processLogin,
   } = useAuth();
   let history = useHistory();
   let location = useLocation();
@@ -83,7 +85,7 @@ const Login = () => {
           />
         </div>
 
-        <div>{error}</div>
+        <div className="text-danger">{error}</div>
         <div className="col-12">
           <button type="submit" className="btn btn-primary">
             Login
